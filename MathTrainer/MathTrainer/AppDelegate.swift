@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  MathTrainer
 //
-//  Created by MacBook Pro 13 2019 on 4/6/23.
+//  Created by MacBook Pro 13 2019 on 3/30/23.
 //
 
 import UIKit
@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
-
+//
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
