@@ -55,7 +55,7 @@ final class TrainViewController: UIViewController {
         
         var buttonProperties = viewModel.getRandomAnswer()
         
-        rightButton.setTitle(buttonProperties.isRightAnswer ? String(buttonProperties.answer) : buttonProperties.randomAnswer, for: .normal)
+        rightButton.setTitle(buttonProperties.isRightAnswer ? buttonProperties.answer : buttonProperties.randomAnswer, for: .normal)
         leftButton.setTitle(buttonProperties.isRightAnswer ? buttonProperties.randomAnswer : buttonProperties.answer, for: .normal)
         
     }
@@ -70,15 +70,19 @@ final class TrainViewController: UIViewController {
         button.backgroundColor = isRightAnswer ? correctAnswerColor : incorrectAnswerColor
         
         if isRightAnswer {
-            let isSecondAttempt: Bool = rightButton.backgroundColor == incorrectAnswerColor || leftButton.backgroundColor == incorrectAnswerColor
+            let isSecondAttempt: Bool = rightButton.backgroundColor == incorrectAnswerColor ||
+                                        leftButton.backgroundColor == incorrectAnswerColor
             viewModel.checkAnswer(isSecondAttempt)
             
             leftButton.isEnabled = false
             rightButton.isEnabled = false
+            leftButton.setTitleColor(UIColor.black, for: .disabled)
+            rightButton.setTitleColor(UIColor.black, for: .disabled)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 self?.leftButton.isEnabled = true
                 self?.rightButton.isEnabled = true
+
                 
                 self?.configureQuestion()
                 self?.configureButtons()

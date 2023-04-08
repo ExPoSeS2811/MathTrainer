@@ -25,11 +25,6 @@ class TrainViewModel {
         }
     }
     
-    private var firstNumber = 0
-    private var secondNumber = 0
-    private var sign = ""
-    private(set) var count: Int = 0
-    
     var answer: Int {
         switch type {
         case .add:
@@ -42,6 +37,11 @@ class TrainViewModel {
             return firstNumber / secondNumber
         }
     }
+    
+    private var firstNumber = 0
+    private var secondNumber = 0
+    private var sign = ""
+    private(set) var count: Int = 0
 
     func getRandomAnswer() -> ButtonPropertiesModel {
         var randomAnswer: Int
