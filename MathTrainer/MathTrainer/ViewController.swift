@@ -15,8 +15,14 @@ class ViewController: UIViewController{
     // MARK: - Properties
     private var selectedType: MathTypes = .add
     private var totalRightAnswers: [MathTypes: Int] = [.add: 0, .subtract: 0, .multiply: 0, .divide: 0]
+<<<<<<< HEAD
     private var defaultColor: UIColor = UIColor(hex: "f9d423")
     
+=======
+    private let defaultColor: UIColor = UIColor(hex: "f9d423")
+
+
+>>>>>>> 9e10ae8 (Prepare)
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +48,10 @@ class ViewController: UIViewController{
     }
     
     private func configureButtons() {
+<<<<<<< HEAD
         // Add shadow + default color
+=======
+>>>>>>> 9e10ae8 (Prepare)
         buttonsCollection.forEach {
             $0.backgroundColor = defaultColor
             $0.addShadow()

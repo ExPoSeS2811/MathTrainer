@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		7368E4FE29E13F1E006693FF /* UIButton+addShadow().swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368E4FD29E13F1E006693FF /* UIButton+addShadow().swift */; };
 		7368E50029E140EF006693FF /* MathType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368E4FF29E140EF006693FF /* MathType.swift */; };
 		737CAB7A29E16D6E00853B3D /* ButtonPropertiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737CAB7929E16D6E00853B3D /* ButtonPropertiesModel.swift */; };
 		737CAB7C29E16EE100853B3D /* TrainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737CAB7B29E16EE100853B3D /* TrainViewModel.swift */; };
+=======
+		7368E4F329E135E5006693FF /* UIButton+addShadow().swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368E4F229E135E5006693FF /* UIButton+addShadow().swift */; };
+		7368E4F629E1377B006693FF /* TrainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368E4F529E1377B006693FF /* TrainViewModel.swift */; };
+		7368E4FA29E13821006693FF /* MathTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368E4F929E13821006693FF /* MathTypes.swift */; };
+>>>>>>> 9e10ae8 (Prepare)
 		73862CF929D55DED00E2F14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862CF829D55DED00E2F14C /* AppDelegate.swift */; };
 		73862CFB29D55DED00E2F14C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862CFA29D55DED00E2F14C /* SceneDelegate.swift */; };
 		73862CFD29D55DED00E2F14C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862CFC29D55DED00E2F14C /* ViewController.swift */; };
@@ -22,10 +28,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		7368E4FD29E13F1E006693FF /* UIButton+addShadow().swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+addShadow().swift"; sourceTree = "<group>"; };
 		7368E4FF29E140EF006693FF /* MathType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathType.swift; sourceTree = "<group>"; };
 		737CAB7929E16D6E00853B3D /* ButtonPropertiesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPropertiesModel.swift; sourceTree = "<group>"; };
 		737CAB7B29E16EE100853B3D /* TrainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainViewModel.swift; sourceTree = "<group>"; };
+=======
+		7368E4F229E135E5006693FF /* UIButton+addShadow().swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+addShadow().swift"; sourceTree = "<group>"; };
+		7368E4F529E1377B006693FF /* TrainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainViewModel.swift; path = ../../../../TrainViewModel.swift; sourceTree = "<group>"; };
+		7368E4F929E13821006693FF /* MathTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathTypes.swift; sourceTree = "<group>"; };
+>>>>>>> 9e10ae8 (Prepare)
 		73862CF529D55DED00E2F14C /* MathTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73862CF829D55DED00E2F14C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73862CFA29D55DED00E2F14C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +61,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+<<<<<<< HEAD
 		7368E4FC29E13DA0006693FF /* Types */ = {
 			isa = PBXGroup;
 			children = (
@@ -62,16 +75,32 @@
 			children = (
 				737CAB7B29E16EE100853B3D /* TrainViewModel.swift */,
 				73A3051629D6058300231106 /* TrainViewController.swift */,
+=======
+		7368E4F429E13752006693FF /* Train */ = {
+			isa = PBXGroup;
+			children = (
+				73A3051629D6058300231106 /* TrainViewController.swift */,
+				7368E4F529E1377B006693FF /* TrainViewModel.swift */,
+>>>>>>> 9e10ae8 (Prepare)
 			);
 			path = Train;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		737CAB7629E16CEA00853B3D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				737CAB7929E16D6E00853B3D /* ButtonPropertiesModel.swift */,
 			);
 			path = Models;
+=======
+		7368E4F829E13809006693FF /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				7368E4F929E13821006693FF /* MathTypes.swift */,
+			);
+			path = Types;
+>>>>>>> 9e10ae8 (Prepare)
 			sourceTree = "<group>";
 		};
 		73862CEC29D55DED00E2F14C = {
@@ -93,14 +122,22 @@
 		73862CF729D55DED00E2F14C /* MathTrainer */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				737CAB7629E16CEA00853B3D /* Models */,
 				7368E50129E14188006693FF /* Train */,
+=======
+				7368E4F829E13809006693FF /* Types */,
+>>>>>>> 9e10ae8 (Prepare)
 				73ADB63229DE7E100022A97F /* Extensions */,
 				73862CF829D55DED00E2F14C /* AppDelegate.swift */,
+				7368E4F429E13752006693FF /* Train */,
 				73862CFA29D55DED00E2F14C /* SceneDelegate.swift */,
 				73862CFC29D55DED00E2F14C /* ViewController.swift */,
 				73862CFE29D55DED00E2F14C /* Main.storyboard */,
+<<<<<<< HEAD
 				7368E4FC29E13DA0006693FF /* Types */,
+=======
+>>>>>>> 9e10ae8 (Prepare)
 				73862D0129D55DEF00E2F14C /* Assets.xcassets */,
 				73862D0329D55DEF00E2F14C /* LaunchScreen.storyboard */,
 				73862D0629D55DEF00E2F14C /* Info.plist */,
@@ -112,7 +149,11 @@
 			isa = PBXGroup;
 			children = (
 				73ADB63029DE7DD70022A97F /* UIColor+HexInit.swift */,
+<<<<<<< HEAD
 				7368E4FD29E13F1E006693FF /* UIButton+addShadow().swift */,
+=======
+				7368E4F229E135E5006693FF /* UIButton+addShadow().swift */,
+>>>>>>> 9e10ae8 (Prepare)
 			);
 			name = Extensions;
 			path = ../Extensions;
@@ -191,9 +232,16 @@
 			files = (
 				737CAB7C29E16EE100853B3D /* TrainViewModel.swift in Sources */,
 				73ADB63129DE7DD70022A97F /* UIColor+HexInit.swift in Sources */,
+<<<<<<< HEAD
 				7368E50029E140EF006693FF /* MathType.swift in Sources */,
 				73862CFD29D55DED00E2F14C /* ViewController.swift in Sources */,
 				7368E4FE29E13F1E006693FF /* UIButton+addShadow().swift in Sources */,
+=======
+				7368E4FA29E13821006693FF /* MathTypes.swift in Sources */,
+				73862CFD29D55DED00E2F14C /* ViewController.swift in Sources */,
+				7368E4F629E1377B006693FF /* TrainViewModel.swift in Sources */,
+				7368E4F329E135E5006693FF /* UIButton+addShadow().swift in Sources */,
+>>>>>>> 9e10ae8 (Prepare)
 				73A3051729D6058300231106 /* TrainViewController.swift in Sources */,
 				73862CF929D55DED00E2F14C /* AppDelegate.swift in Sources */,
 				737CAB7A29E16D6E00853B3D /* ButtonPropertiesModel.swift in Sources */,
