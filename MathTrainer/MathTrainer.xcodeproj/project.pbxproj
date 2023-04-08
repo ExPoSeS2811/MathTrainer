@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7368E4FE29E13F1E006693FF /* UIButton+addShadow().swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368E4FD29E13F1E006693FF /* UIButton+addShadow().swift */; };
+		7368E50029E140EF006693FF /* MathType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368E4FF29E140EF006693FF /* MathType.swift */; };
 		73862CF929D55DED00E2F14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862CF829D55DED00E2F14C /* AppDelegate.swift */; };
 		73862CFB29D55DED00E2F14C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862CFA29D55DED00E2F14C /* SceneDelegate.swift */; };
 		73862CFD29D55DED00E2F14C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862CFC29D55DED00E2F14C /* ViewController.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7368E4FD29E13F1E006693FF /* UIButton+addShadow().swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+addShadow().swift"; sourceTree = "<group>"; };
+		7368E4FF29E140EF006693FF /* MathType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathType.swift; sourceTree = "<group>"; };
 		73862CF529D55DED00E2F14C /* MathTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73862CF829D55DED00E2F14C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73862CFA29D55DED00E2F14C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7368E4FC29E13DA0006693FF /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				7368E4FF29E140EF006693FF /* MathType.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
 		73862CEC29D55DED00E2F14C = {
 			isa = PBXGroup;
 			children = (
@@ -64,8 +76,9 @@
 				73862CF829D55DED00E2F14C /* AppDelegate.swift */,
 				73862CFA29D55DED00E2F14C /* SceneDelegate.swift */,
 				73862CFC29D55DED00E2F14C /* ViewController.swift */,
-				73862CFE29D55DED00E2F14C /* Main.storyboard */,
 				73A3051629D6058300231106 /* TrainViewController.swift */,
+				73862CFE29D55DED00E2F14C /* Main.storyboard */,
+				7368E4FC29E13DA0006693FF /* Types */,
 				73862D0129D55DEF00E2F14C /* Assets.xcassets */,
 				73862D0329D55DEF00E2F14C /* LaunchScreen.storyboard */,
 				73862D0629D55DEF00E2F14C /* Info.plist */,
@@ -77,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				73ADB63029DE7DD70022A97F /* UIColor+HexInit.swift */,
+				7368E4FD29E13F1E006693FF /* UIButton+addShadow().swift */,
 			);
 			name = Extensions;
 			path = ../Extensions;
@@ -154,7 +168,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				73ADB63129DE7DD70022A97F /* UIColor+HexInit.swift in Sources */,
+				7368E50029E140EF006693FF /* MathType.swift in Sources */,
 				73862CFD29D55DED00E2F14C /* ViewController.swift in Sources */,
+				7368E4FE29E13F1E006693FF /* UIButton+addShadow().swift in Sources */,
 				73A3051729D6058300231106 /* TrainViewController.swift in Sources */,
 				73862CF929D55DED00E2F14C /* AppDelegate.swift in Sources */,
 				73862CFB29D55DED00E2F14C /* SceneDelegate.swift in Sources */,

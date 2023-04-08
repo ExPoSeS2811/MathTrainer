@@ -7,10 +7,6 @@
 
 import UIKit
 
-enum MathTypes: Int {
-    case add, subtract, multiply, divide
-}
-
 class ViewController: UIViewController{
     // MARK: - IBOutlets
     @IBOutlet var countAnswersLabelCollection: [UILabel]!
@@ -42,14 +38,14 @@ class ViewController: UIViewController{
         }
     }
     
+    @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
+    }
+    
     private func configureButtons() {
         // Add shadow + default color
-        buttonsCollection.forEach { button in
-            button.backgroundColor = defaultColor
-            button.layer.shadowColor = UIColor.darkGray.cgColor
-            button.layer.shadowOffset = CGSize(width: 0, height: 2)
-            button.layer.shadowOpacity = 0.8
-            button.layer.shadowRadius = 3
+        buttonsCollection.forEach {
+            $0.backgroundColor = defaultColor
+            $0.addShadow()
         }
     }
 }

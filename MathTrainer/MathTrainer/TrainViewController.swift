@@ -66,6 +66,7 @@ final class TrainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addShadow()
         configureQuestion()
         configureButtons()
     }
@@ -82,15 +83,13 @@ final class TrainViewController: UIViewController {
     
     // MARK: - Methods
     private func addShadow() {
-        [leftButton, rightButton].forEach { button in
-            button?.layer.shadowColor = UIColor.darkGray.cgColor
-            button?.layer.shadowOffset = CGSize(width: 0, height: 2)
-            button?.layer.shadowOpacity = 0.8
-            button?.layer.shadowRadius = 3
-        }
+        [leftButton, rightButton].forEach { $0.addShadow() }
     }
     
     private func configureButtons() {
+        leftButton.backgroundColor = defaultColor
+        rightButton.backgroundColor = defaultColor
+        
         let isRightButton = Bool.random()
         var randomAnswer: Int
         repeat {
@@ -100,10 +99,9 @@ final class TrainViewController: UIViewController {
         rightButton.setTitle(isRightButton ? String(answer) : String(randomAnswer), for: .normal)
         leftButton.setTitle(isRightButton ? String(randomAnswer) : String(answer), for: .normal)
         
-        leftButton.backgroundColor = .systemYellow
-        leftButton.backgroundColor = .systemYellow
-        
     }
+    
+    
     
     private func configureQuestion() {
         // Improved division
@@ -122,25 +120,25 @@ final class TrainViewController: UIViewController {
     
     private func check(answer: String, for button: UIButton) {
         let isRightAnswer = Int(answer) == self.answer
-        
         button.backgroundColor = isRightAnswer ? correctAnswerColor : incorrectAnswerColor
         
         if isRightAnswer {
-            var isSecondAttempt: Bool = rightButton.backgroundColor == incorrectAnswerColor || leftButton.backgroundColor == incorrectAnswerColor
+            let isSecondAttempt: Bool = rightButton.backgroundColor == incorrectAnswerColor || leftButton.backgroundColor == incorrectAnswerColor
             if !isSecondAttempt {
                 count +=  1
                 delegate?.passData(with: 1)
             }
             
-            leftButton.isEnabled = true
-            rightButton.isEnabled = true
+            leftButton.isEnabled = false
+            rightButton.isEnabled = false
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                self?.leftButton.isEnabled = true
+                self?.rightButton.isEnabled = true
+                
                 self?.configureQuestion()
                 self?.configureButtons()
                 
-                self?.leftButton.isEnabled = false
-                self?.rightButton.isEnabled = false
             }
         }
     }
