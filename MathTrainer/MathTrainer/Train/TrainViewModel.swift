@@ -43,14 +43,18 @@ class TrainViewModel {
         }
     }
 
-    func getRandomAnswer() -> Int {
+    func getRandomAnswer() -> ButtonPropertiesModel {
         var randomAnswer: Int
         
         repeat {
             randomAnswer = Int.random(in: (answer - 10)...(answer + 10))
         } while randomAnswer == answer
         
-        return randomAnswer
+        return ButtonPropertiesModel(
+            isRightAnswer: Bool.random(),
+            answer: String(answer),
+            randomAnswer: String(randomAnswer)
+        )
     }
     
     func getQuestion() -> String {

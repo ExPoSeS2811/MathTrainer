@@ -19,15 +19,7 @@ final class TrainViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     
     // MARK: - Properties
-    weak var delegate: TrainViewControllerDelegate?
-
-    private let viewModel = TrainViewModel()
-        
-    var type: MathTypes = .add {
-        didSet {
-            viewModel.type = type
-        }
-    }
+    let viewModel = TrainViewModel()
     
     private let correctAnswerColor: UIColor = UIColor(hex: "3fff7c")
     private let incorrectAnswerColor: UIColor = UIColor(hex: "fe3d6c")
@@ -36,7 +28,6 @@ final class TrainViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.delegate = delegate
         
         addShadow()
         configureQuestion()
@@ -62,11 +53,10 @@ final class TrainViewController: UIViewController {
         leftButton.backgroundColor = defaultColor
         rightButton.backgroundColor = defaultColor
         
-        let isRightButton = Bool.random()
-        let randomAnswer = viewModel.getRandomAnswer()
+        var buttonProperties = viewModel.getRandomAnswer()
         
-        rightButton.setTitle(isRightButton ? String(viewModel.answer) : String(randomAnswer), for: .normal)
-        leftButton.setTitle(isRightButton ? String(randomAnswer) : String(viewModel.answer), for: .normal)
+        rightButton.setTitle(buttonProperties.isRightAnswer ? String(buttonProperties.answer) : buttonProperties.randomAnswer, for: .normal)
+        leftButton.setTitle(buttonProperties.isRightAnswer ? buttonProperties.randomAnswer : buttonProperties.answer, for: .normal)
         
     }
     

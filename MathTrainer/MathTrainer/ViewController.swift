@@ -33,8 +33,8 @@ class ViewController: UIViewController{
     // MARK: - Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? TrainViewController {
-            viewController.delegate = self
-            viewController.type = selectedType // TODO: How can i move it to trainViewModel?
+            viewController.viewModel.delegate = self
+            viewController.viewModel.type = selectedType
         }
     }
     
