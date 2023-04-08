@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol TrainViewControllerDelegate: class {
-    func passData(with count: Int)
+protocol TrainViewControllerDelegate: AnyObject {
+    func passData()
 }
 
 final class TrainViewController: UIViewController {
@@ -20,28 +20,12 @@ final class TrainViewController: UIViewController {
     
     // MARK: - Properties
     weak var delegate: TrainViewControllerDelegate?
-    
+
+    private let viewModel = TrainViewModel()
+        
     var type: MathTypes = .add {
         didSet {
-            switch type {
-            case .add:
-                sign = "+"
-            case .subtract:
-                sign = "-"
-            case .multiply:
-                sign = "*"
-            case .divide:
-                sign = "/"
-            }
-        }
-    }
-    
-    private var firstNumber = 0
-    private var secondNumber = 0
-    private var sign = ""
-    private var count: Int = 0 {
-        didSet {
-            countCorrectAnswersLabel.text = String(count)
+            viewModel.type = type
         }
     }
     
@@ -49,22 +33,10 @@ final class TrainViewController: UIViewController {
     private let incorrectAnswerColor: UIColor = UIColor(hex: "fe3d6c")
     private let defaultColor: UIColor = UIColor(hex: "f9d423")
     
-    private var answer: Int {
-        switch type {
-        case .add:
-            return firstNumber + secondNumber
-        case .subtract:
-            return firstNumber - secondNumber
-        case .multiply:
-            return firstNumber * secondNumber
-        case .divide:
-            return firstNumber / secondNumber
-        }
-    }
-    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.delegate = delegate
         
         addShadow()
         configureQuestion()
@@ -91,43 +63,25 @@ final class TrainViewController: UIViewController {
         rightButton.backgroundColor = defaultColor
         
         let isRightButton = Bool.random()
-        var randomAnswer: Int
-        repeat {
-            randomAnswer = Int.random(in: (answer - 10)...(answer + 10))
-        } while randomAnswer == answer
+        let randomAnswer = viewModel.getRandomAnswer()
         
-        rightButton.setTitle(isRightButton ? String(answer) : String(randomAnswer), for: .normal)
-        leftButton.setTitle(isRightButton ? String(randomAnswer) : String(answer), for: .normal)
+        rightButton.setTitle(isRightButton ? String(viewModel.answer) : String(randomAnswer), for: .normal)
+        leftButton.setTitle(isRightButton ? String(randomAnswer) : String(viewModel.answer), for: .normal)
         
     }
     
-    
-    
     private func configureQuestion() {
-        // Improved division
-        if type == .divide {
-            repeat {
-                firstNumber = Int.random(in: 2...99)
-                secondNumber = Int.random(in: 2...firstNumber)
-            } while firstNumber % secondNumber != 0 || firstNumber == secondNumber
-        } else {
-            firstNumber = Int.random(in: 1...99)
-            secondNumber = Int.random(in: 1...99)
-        }
-        
-        questionLabel.text = "\(firstNumber) \(sign) \(secondNumber) ="
+        countCorrectAnswersLabel.text = String(viewModel.count)
+        questionLabel.text = viewModel.getQuestion()
     }
     
     private func check(answer: String, for button: UIButton) {
-        let isRightAnswer = Int(answer) == self.answer
+        let isRightAnswer = Int(answer) == viewModel.answer
         button.backgroundColor = isRightAnswer ? correctAnswerColor : incorrectAnswerColor
         
         if isRightAnswer {
             let isSecondAttempt: Bool = rightButton.backgroundColor == incorrectAnswerColor || leftButton.backgroundColor == incorrectAnswerColor
-            if !isSecondAttempt {
-                count +=  1
-                delegate?.passData(with: 1)
-            }
+            viewModel.checkAnswer(isSecondAttempt)
             
             leftButton.isEnabled = false
             rightButton.isEnabled = false

@@ -34,7 +34,7 @@ class ViewController: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? TrainViewController {
             viewController.delegate = self
-            viewController.type = selectedType
+            viewController.type = selectedType // TODO: How can i move it to trainViewModel?
         }
     }
     
@@ -52,10 +52,10 @@ class ViewController: UIViewController{
 
 // MARK: - TrainViewControllerDelegate
 extension ViewController: TrainViewControllerDelegate {
-    func passData(with count: Int) {
+    func passData() {
         let indexAnswerLabel = selectedType.rawValue
         if let rightAnswers = totalRightAnswers[selectedType] {
-            totalRightAnswers[selectedType] = rightAnswers + count
+            totalRightAnswers[selectedType] = rightAnswers + 1
             countAnswersLabelCollection[indexAnswerLabel].text = String(totalRightAnswers[selectedType]!)
         }
     }
