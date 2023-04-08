@@ -47,6 +47,7 @@ final class TrainViewController: UIViewController {
     
     private let correctAnswerColor: UIColor = UIColor(hex: "3fff7c")
     private let incorrectAnswerColor: UIColor = UIColor(hex: "fe3d6c")
+    private let defaultColor: UIColor = UIColor(hex: "f9d423")
     
     private var answer: Int {
         switch type {
@@ -80,20 +81,16 @@ final class TrainViewController: UIViewController {
     }
     
     // MARK: - Methods
-    private func configureButtons() {
-        let buttonsArray = [leftButton, rightButton]
-        
-        buttonsArray.forEach { button in
-            button?.backgroundColor = UIColor.systemYellow
-        }
-        
-        buttonsArray.forEach { button in
+    private func addShadow() {
+        [leftButton, rightButton].forEach { button in
             button?.layer.shadowColor = UIColor.darkGray.cgColor
             button?.layer.shadowOffset = CGSize(width: 0, height: 2)
             button?.layer.shadowOpacity = 0.8
             button?.layer.shadowRadius = 3
         }
-        
+    }
+    
+    private func configureButtons() {
         let isRightButton = Bool.random()
         var randomAnswer: Int
         repeat {
@@ -102,22 +99,25 @@ final class TrainViewController: UIViewController {
         
         rightButton.setTitle(isRightButton ? String(answer) : String(randomAnswer), for: .normal)
         leftButton.setTitle(isRightButton ? String(randomAnswer) : String(answer), for: .normal)
+        
+        leftButton.backgroundColor = .systemYellow
+        leftButton.backgroundColor = .systemYellow
+        
     }
     
     private func configureQuestion() {
-        firstNumber = Int.random(in: 1...99)
-        secondNumber = Int.random(in: 1...99)
-        
         // Improved division
         if type == .divide {
             repeat {
                 firstNumber = Int.random(in: 2...99)
                 secondNumber = Int.random(in: 2...firstNumber)
             } while firstNumber % secondNumber != 0 || firstNumber == secondNumber
+        } else {
+            firstNumber = Int.random(in: 1...99)
+            secondNumber = Int.random(in: 1...99)
         }
         
-        let question: String = "\(firstNumber) \(sign) \(secondNumber) ="
-        questionLabel.text = question
+        questionLabel.text = "\(firstNumber) \(sign) \(secondNumber) ="
     }
     
     private func check(answer: String, for button: UIButton) {
@@ -132,9 +132,15 @@ final class TrainViewController: UIViewController {
                 delegate?.passData(with: 1)
             }
             
+            leftButton.isEnabled = true
+            rightButton.isEnabled = true
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 self?.configureQuestion()
                 self?.configureButtons()
+                
+                self?.leftButton.isEnabled = false
+                self?.rightButton.isEnabled = false
             }
         }
     }
