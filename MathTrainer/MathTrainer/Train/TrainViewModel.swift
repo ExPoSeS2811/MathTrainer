@@ -8,7 +8,6 @@
 import Foundation
 
 class TrainViewModel {
-    weak var delegate: TrainViewControllerDelegate?
     
     var type: MathTypes = .add {
         didSet {
@@ -22,6 +21,8 @@ class TrainViewModel {
             case .divide:
                 sign = "/"
             }
+            
+            self.count = UserDefaults.standard.object(forKey: type.key) as? Int ?? 0
         }
     }
     
@@ -41,7 +42,11 @@ class TrainViewModel {
     private var firstNumber = 0
     private var secondNumber = 0
     private var sign = ""
-    private(set) var count: Int = 0
+    private(set) var count: Int = 0 {
+        didSet {
+            UserDefaults.standard.set(count, forKey: type.key)
+        }
+    }
 
     func getRandomAnswer() -> ButtonPropertiesModel {
         var randomAnswer: Int
@@ -74,7 +79,11 @@ class TrainViewModel {
     func checkAnswer(_ isSecondAttempt: Bool) {
         if !isSecondAttempt {
             count += 1
-            delegate?.passData()
         }
     }
+    
+}
+
+extension UserDefaults {
+    static let container = UserDefaults(suiteName: "container")
 }

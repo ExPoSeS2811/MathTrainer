@@ -20,8 +20,8 @@ class ViewController: UIViewController{
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         configureButtons()
+        setCountLabels()
     }
     
     // MARK: - Actions
@@ -33,12 +33,38 @@ class ViewController: UIViewController{
     // MARK: - Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? TrainViewController {
-            viewController.viewModel.delegate = self
             viewController.viewModel.type = selectedType
         }
     }
     
     @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
+        setCountLabels()
+    }
+    
+    @IBAction func clearButtonPressed(_ sender: Any) {
+        for (countLabel, mathType) in zip(countAnswersLabelCollection, MathTypes.allCases) {
+            UserDefaults.standard.removeObject(forKey: mathType.key)
+            countLabel.text = "-"
+            
+        }
+    }
+    
+    private func setCountLabels() {
+        MathTypes.allCases.forEach { type in
+            let key = type.key
+            guard let count = UserDefaults.standard.object(forKey: key) as? Int else { return }
+            
+            switch type {
+            case .add:
+                countAnswersLabelCollection[0].text = String(count)
+            case .subtract:
+                countAnswersLabelCollection[1].text = String(count)
+            case .multiply:
+                countAnswersLabelCollection[2].text = String(count)
+            case .divide:
+                countAnswersLabelCollection[3].text = String(count)
+            }
+        }
     }
     
     private func configureButtons() {
@@ -46,17 +72,6 @@ class ViewController: UIViewController{
         buttonsCollection.forEach {
             $0.backgroundColor = defaultColor
             $0.addShadow()
-        }
-    }
-}
-
-// MARK: - TrainViewControllerDelegate
-extension ViewController: TrainViewControllerDelegate {
-    func passData() {
-        let indexAnswerLabel = selectedType.rawValue
-        if let rightAnswers = totalRightAnswers[selectedType] {
-            totalRightAnswers[selectedType] = rightAnswers + 1
-            countAnswersLabelCollection[indexAnswerLabel].text = String(totalRightAnswers[selectedType]!)
         }
     }
 }

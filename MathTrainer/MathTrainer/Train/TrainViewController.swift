@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol TrainViewControllerDelegate: AnyObject {
-    func passData()
-}
-
 final class TrainViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var countCorrectAnswersLabel: UILabel!
@@ -24,10 +20,12 @@ final class TrainViewController: UIViewController {
     private let correctAnswerColor: UIColor = UIColor(hex: "3fff7c")
     private let incorrectAnswerColor: UIColor = UIColor(hex: "fe3d6c")
     private let defaultColor: UIColor = UIColor(hex: "f9d423")
+    var count = 0
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        count = UserDefaults.standard.object(forKey: viewModel.type.key) as? Int ?? 0
         
         addShadow()
         configureQuestion()
@@ -53,7 +51,7 @@ final class TrainViewController: UIViewController {
         leftButton.backgroundColor = defaultColor
         rightButton.backgroundColor = defaultColor
         
-        var buttonProperties = viewModel.getRandomAnswer()
+        let buttonProperties = viewModel.getRandomAnswer()
         
         rightButton.setTitle(buttonProperties.isRightAnswer ? buttonProperties.answer : buttonProperties.randomAnswer, for: .normal)
         leftButton.setTitle(buttonProperties.isRightAnswer ? buttonProperties.randomAnswer : buttonProperties.answer, for: .normal)
@@ -61,7 +59,7 @@ final class TrainViewController: UIViewController {
     }
     
     private func configureQuestion() {
-        countCorrectAnswersLabel.text = String(viewModel.count)
+        countCorrectAnswersLabel.text = String(viewModel.count - self.count)
         questionLabel.text = viewModel.getQuestion()
     }
     

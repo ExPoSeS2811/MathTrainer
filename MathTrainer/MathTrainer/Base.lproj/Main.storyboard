@@ -197,11 +197,22 @@
                                     <constraint firstItem="bQo-7N-t7p" firstAttribute="top" secondItem="7nU-91-aei" secondAttribute="bottom" constant="7" id="kqv-52-AsF"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyz-0g-Tmd">
+                                <rect key="frame" x="164.66666666666666" y="753" width="64" height="35"/>
+                                <color key="backgroundColor" red="0.070588235289999995" green="0.0078431372550000003" blue="0.17643549489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Clear"/>
+                                <connections>
+                                    <action selector="clearButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uWh-To-cXv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="cyz-0g-Tmd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DWD-M0-23j"/>
                             <constraint firstItem="mLA-yN-PDs" firstAttribute="centerY" secondItem="vB3-aN-I8z" secondAttribute="centerY" id="QtO-nM-5nz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cyz-0g-Tmd" secondAttribute="bottom" constant="30" id="SLa-S0-Bmk"/>
                             <constraint firstItem="mLA-yN-PDs" firstAttribute="centerX" secondItem="KX3-do-vFL" secondAttribute="centerX" id="Wvt-j5-m6n"/>
                             <constraint firstItem="vta-Ti-CvW" firstAttribute="top" secondItem="44s-1Z-xgI" secondAttribute="bottom" constant="40" id="Xsx-W7-p5M"/>
                             <constraint firstItem="44s-1Z-xgI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Z92-K8-PlF"/>
